@@ -1,16 +1,16 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     margin: 0;
     display: flex;
     height: 100vh;
     background-color: #121212;
-    color: #e0e0e0; /* Lighter text color */
+    color: #e0e0e0; 
     font-size: 16px;
     line-height: 1.6;
 }
 
 a {
-    color: #b3b3b3; /* Softer link color */
+    color: #b3b3b3; 
     text-decoration: none;
 }
 
@@ -24,12 +24,10 @@ a {
     flex-grow: 1;
 }
 
-/* ... (Rest of your CSS) ... */
-
 .user-auth {
     display: flex;
     align-items: center;
-    margin-right: 20px; /* Space between auth buttons and user profile */
+    margin-right: 20px; 
 }
 
 .user-auth button {
@@ -38,7 +36,7 @@ a {
     color: #b3b3b3;
     padding: 8px 15px;
     border-radius: 20px;
-    margin-left: 10px; /* Space between buttons */
+    margin-left: 10px; 
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -58,11 +56,9 @@ a {
     margin-right: 10px;
 }
 
-/* ... (Rest of your CSS) ... */
-
 .sidebar {
     width: 250px;
-    background-color: #1e1e1e; /* Slightly lighter sidebar */
+    background-color: #1e1e1e; 
     padding: 30px;
 }
 
@@ -70,7 +66,7 @@ a {
     font-size: 2.2em;
     font-weight: bold;
     margin-bottom: 40px;
-    color: #1db954; /* Green accent color */
+    color: #1db954; 
 }
 
 .sidebar nav ul {
@@ -93,185 +89,6 @@ a {
     background-color: #282828;
 }
 
-.main-content {
-    flex-grow: 1;
-    padding: 40px;
-    overflow-y: scroll;
-    max-height: 70vh;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.search-bar input {
-    padding: 14px 20px;
-    border: none;
-    border-radius: 30px;
-    background-color: #282828;
-    color: #e0e0e0;
-    width: 400px;
-}
-
-.user-profile img {
-    width: 30px;
-    height: 30px;
-    border-radius: 20%;
-    border: 2px solid  gray; /* Green border */
-}
-
-.upper-content, .lower-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    justify-content: center;
-    padding: 5px;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-}
-
-.box1 {
-    background-color: #232323;
-    border-radius: 4px;
-    padding: 1px; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-}
-
-.box1 p {
-    font-size: 17px;
-    margin-left: 10px;
-    margin-right: 10px; 
-    font-weight: normal;
-}
-
-.box1 img {
-    max-width: 65px;
-    height: 65px;
-    border-radius: 3%;
-}
-
-.box1 {
-    position: relative;
-}
-
-.box1:hover {
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.2);
-    transition: background-color 0.3s ease; 
-}
-
-.featured-content h2, .song-list h2 {
-    margin-bottom: 30px;
-    font-size: 2em;
-    font-weight: 600;
-    color: #fff;
-}
-
-.playlist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-}
-
-.playlist-card {
-    text-align: center;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 20px;
-    transition: transform 0.3s ease;
-}
-
-.playlist-card:hover {
-    transform: translateY(-5px);
-}
-
-.playlist-card img {
-    width: 60%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-.card{
-    background-color: #232323;
-    width: 150px;
-    border-radius: 0.5rem;
-    padding: 8px;
-    margin-left: 1.5rem;
-    margin-top: 1rem;
-    border-color:#232323 ;
-}
-h2:hover{
-    text-decoration:underline;
-}
-.card-container{
-    display: flex;
-    flex-wrap: wrap;
-}
-.card-img{
-    width: 100%;
-    border-radius: 0.5rem;
-}
-.card-title{
-    font-weight: 600;
-}
-.card-info{
-    font-size: 0.75rem;
-    opacity: 0.8;
-}
-
-.song-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.song-list li {
-    padding: 20px;
-    border-bottom: 1px solid #282828;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-}
-
-.song-list li:hover {
-    background-color: #282828;
-}
-.song-info{
-    width: 100px;
-    max-height: fit-content;
-}
-
-.player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1e1e1e;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-
-.player .song-details {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-}
-
-.player .song-details img {
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-
-.player .song-info {
-    display: flex;
-    flex-direction: column;
-}
-
 .player .controls button {
     background: none;
     border: none;
@@ -283,13 +100,13 @@ h2:hover{
 
 .player .controls {
     display: flex;
-    justify-content: center; /* Center buttons */
+    justify-content: center; 
     align-items: center;
-    width: 100%; /* Full width */
+    width: 100%; 
 }
 .player-controls {
     display: flex;
-    flex-direction: column;  /* Stack controls and progress bar vertically */
+    flex-direction: column;  
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -301,16 +118,13 @@ h2:hover{
     color: #1db954;
 }
 
-/* ... (Your existing CSS) ... */
-
 .player .progress-bar {
     flex-grow: 1;
     margin-left: 30px;
     margin-right: 30px;
     color: greenyellow;
-    display: flex; /* Added to align progress bar and time left */
-    align-items: center; /* Vertically align items */
-}
+    display: flex; 
+    align-items: center; 
 
 .player .progress-bar input {
     width: 1000px;
@@ -320,57 +134,6 @@ h2:hover{
 }
 
 .progress-bar .time-left {
-    margin-left: 111px; /* Space between progress bar and time left */
-}
+    margin-left: 111px; 
 
-.song-list h2 {
-    margin-bottom: 30px;
-    font-size: 2em;
-    font-weight: 600;
-    color: #fff;
-}
-
-.song-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.song-list li {
-    padding: 20px;
-    border-bottom: 1px solid #282828;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-    display: flex; /* Using Flexbox */
-    align-items: center; /* Vertically align items */
-}
-
-.song-list li:hover {
-    background-color: #282828;
-}
-
-.song-list li .song-info {
-    flex-grow: 1; /* Allow song info to take up available space */
-}
-
-.song-list li .song-cover-small {
-    width: 50px; /* Smaller cover image */
-    height: 50px;
-    margin-right: 20px;
-    border-radius: 3px;
-}
-
-/* ... (rest of your CSS) ... */
-
-.fav-btn, .add-btn {
-    background-color: #ff4081;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-
-.fav-btn.active {
-    background-color: gold;
-}
+}};
