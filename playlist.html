@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Playlists</title>
+    <link rel="stylesheet" href="playlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+        <div class="container">
+            <aside class="playlists-sidebar">
+                <div class="sidebar-header">
+                    <h2>Your Playlists</h2>
+                    <button id="create-playlist-btn"><i class="fa-solid fa-plus"></i> New Playlist</button>
+                </div>
+                <ul id="playlist-list">
+                    </ul>
+            </aside>
+            <main class="playlist-main-content">
+                <header class="playlist-header">
+                    <div id="current-playlist-info">
+                        <h1></h1>
+                        <p id="playlist-song-count"></p>
+                    </div>
+                    <div class="playlist-actions">
+                        <button id="delete-playlist-btn" style="margin-left: 15px;"><i class="fa-solid fa-trash"></i> Delete Playlist</button>
+                    </div>
+                </header>
+                <div id="playlist-songs-list">
+                    <p id="empty-playlist-message" style="display:none;">This playlist is empty.</p>
+                </div>
+            </main>
+            <footer class="player">
+                <div class="player-info">
+                    <h4 id="player-song-title"></h4>
+                    <p id="player-song-artist"></p>
+                </div>
+                <div class="controls">
+                    <button id="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
+                    <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button>
+                    <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+                </div>
+                <div class="progress-bar">
+                    <input type="range" id="progress" min="0" max="100" value="0">
+                    <div class="time-left" id="time-left">0:00</div>
+                </div>
+                <audio id="audio-player"></audio>
+            </footer>
+        </div>
+        <script src="playlist.js"></script>
+    </body>
+    </html>
+    

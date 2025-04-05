@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <section class="song-list">
+        <h2>Songs</h2>
+        <ul id="song-list-ul">
+            </ul>
+    </section>
+</main>
+
+<footer class="player">
+    <div class="song-details">
+        <img src="default-song-cover.jpg" alt="Song Cover" id="song-cover">
+        <div class="song-info">
+            <span id="song-title">Song Title</span>
+            <span id="artist-name">Artist Name</span>
+        </div>
+    </div>
+    <div class="controls">
+        <button id="prev-btn">⏮️</button> 
+        <button id="play-pause-btn">▶️</button>
+        <button id="next-btn">⏭️</button>
+    </div>
+    <div class="progress-bar">
+        <input type="range" id="progress" min="0" max="100" value="0">
+        <div class="time-left" id="time-left">0:00</div>
+    </div>
+    
+</footer>
+</div>
+    <script src="love.js"></script>
+</body>
+</html>

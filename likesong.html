@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked Songs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>❤️ Liked Songs</h2>
+    <ul id="liked-songs-list"></ul>
+    <a href="index.html"><button>⬅️ Back to Home</button></a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const likedSongsList = document.getElementById("liked-songs-list");
+            const likedSongs = JSON.parse(localStorage.getItem("likedSongs")) || [];
+
+            likedSongs.forEach((song, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${song.title} - ${song.artist}`;
+                li.style.padding = "10px";
+                li.style.listStyle = "none";
+
+                // Play button
+                const playBtn = document.createElement("button");
+                playBtn.textContent = "▶️";
+                playBtn.style.marginLeft = "10px";
+
+                // Audio element
+                const audio = new Audio(song.src);
+                playBtn.addEventListener("click", () => {
+                    if (audio.paused) {
+                        audio.play();
+                        playBtn.textContent = "⏸️";
+                    } else {
+                        audio.pause();
+                        playBtn.textContent = "▶️";
+                    }
+                });
+
+                li.appendChild(playBtn);
+                likedSongsList.appendChild(li);
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

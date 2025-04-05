@@ -1,0 +1,205 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #111, #000);
+    color: #00ffcc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.song-list {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.song-list h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.song-list ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.song-list li {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00ffcc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 255, 204, 0.2);
+}
+
+.song-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 255, 204, 0.3);
+}
+
+.song-list li img.song-cover-card {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    margin-right: 1rem;
+    object-fit: cover;
+}
+
+.song-list li .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.song-list li .card-content span {
+    margin-bottom: 0.5rem;
+}
+
+.song-list li .card-content .fav-btn,
+.song-list li .card-content .add-btn {
+    background: linear-gradient(to right, #00ffcc, #00aaff);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    margin-top: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.song-list li .card-content .fav-btn.active {
+    background: linear-gradient(to right, #ff6600, #ff9933);
+}
+
+.song-list li .card-content .fav-btn:hover,
+.song-list li .card-content .add-btn:hover {
+    transform: scale(1.05);
+}
+
+.player {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 -8px 15px rgba(0, 255, 204, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    border: 2px solid #00ffcc;
+}
+
+.song-details {
+    display: flex;
+    align-items: center;
+}
+
+#song-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    margin-right: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 255, 204, 0.4);
+    border: 2px solid #00ffcc;
+}
+
+.song-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#song-title, #artist-name {
+    color: #00ffcc;
+    text-shadow: 0 0 5px #00ffcc;
+    margin: 0;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.controls button {
+    background: linear-gradient(to right, #00ffcc, #00aaff);
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0, 255, 204, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.controls button:hover {
+    transform: scale(1.05);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+#progress {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(0, 255, 204, 0.3);
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00ffcc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 0 8px #00ffcc;
+}
+
+#progress::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+#time-left {
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: rgba(0, 255, 204, 0.8);
+    text-shadow: 0 0 3px rgba(0, 255, 204, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .player {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls, .progress-bar {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}

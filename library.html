@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Library - MoodTunes</title>
+    <link rel="stylesheet" href="library.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo"><img src="logo.png"> MoodTunes</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="library.html" class="active">Your Library</a></li>
+                    <li><a href="playlist.html">Playlists</a></li>
+                    <li><a href="liked.html">Liked Songs</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Your Library</h1>
+                <button onclick="window.location.href='index.html'">Back to Home</button>
+            </header>
+             <section class="featured-content">
+                <h1>MoodTunes Playlists</h1>
+                <div class="playlist-grid">
+                    <div class="playlist-card" data-playlist="happy">
+                        <a href="happy.html">
+                            <img src="playlist/hap.jpg" alt="Road Trip">
+                            <h3>Happy Vibes😃</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="sad">
+                        <a href="90s.html" >
+                        <img src="playlist/mel.jpg" alt="Sad Playlist">
+                        <h3>Classic Mood🏛️</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="energetic">
+                        <a href="party.html" >
+                        <img src="playlist/en.jpg" alt="Energetic Playlist">
+                        <h3>Party Vibes🪩</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="chill">
+                        <a href="road.html" >
+                        <img src="playlist/cozy.jpg" alt="Chill Playlist">
+                        <h3>road Trip🛣️</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="trips">
+                        <a href="happy.html" >
+                        <img src="playlist/road.jpg" alt="trip Playlist">
+                        <h3>Road Trips</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="party">
+                        <a href="happy.html" >
+                        <img src="playlist/party.jpg" alt="party Playlist">
+                        <h3>Party Moods</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="Romantic">
+                        <a href="happy.html">
+                        <img src="playlist/ro.jpg" alt="Romantic Playlist">
+                        <h3>Romantic Vibes</h3>
+                        </a>
+                    </div>
+                    <div class="playlist-card" data-playlist="workout">
+                        <a href="happy.html" >
+                        <img src="playlist/out.jpg" alt="workout Playlist">
+                        <h3>Workout Hype</h3>
+                        </a>
+                    </div>
+                </div>
+            </section>
+    <script src="script.js"></script>
+</body>
+</html>

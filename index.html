@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoodTunes</title>
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
@@ -13,9 +16,10 @@
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="C:\Users\nolan\OneDrive\Desktop\eb\NEW\try mood\library.html">Your Library</a></li>
+                    <li><a href="library.html">Mood-based Jams</a></li>
                     <li><a href="playlist.html">Playlists</a></li>
                     <li><a href="likesong.html">Liked Songs</a></li>
+                    <li><a href="history.html">Recent Plays</a></li>
                 </ul>
             </nav>
         </aside>
@@ -31,6 +35,334 @@
                 </div>
             </header>
 
+            <div class="header">
+                <h1>Hey There!</h1>
+            </div>
+            <section class="upper-content">
+                <div class="box1">
+                    <a href="90s.html">
+                    <img src="playlist/90.jpg" alt="Playlist 1">
+                </a>
+                    <p>90's Song</p>
+                </div>
+
+
+                <div class="box1">
+                    <a href="love.html">
+                    <img src="playlist/love.jpg" alt="Playlist 2">
+                </a>
+                    <p>Love & ChillS</p>
+                </div>
+                <div class="box1">
+                    <img src="playlist/hit.jpg" alt="Recommended Albums">
+                    <p>Hot Hit</p>
+                </div>
+            </section>
+            <section class="lower-content">
+                <div class="box1">
+                    <a href="sleep.html">
+                    <img src="playlist/slep.jpg" alt="playlist 3">
+                </a>
+                    <p>Sleepy&Dreamy</p>
+
+                    </div>
+                <div class="box1">
+                    <a href="road.html">
+                    <img src="playlist/road.jpg" alt="Playlist 4">
+                    </a>
+                    <p>Road Trips</p>
+                </div>
+                <div class="box1">
+                    <a href="party.html">
+                    <img src="playlist/party.jpg" alt="Playlist 5">
+                    </a>
+                    <p>Party Mood</p>
+                </div>
+            </section>
+
+            <section class="featured-content">
+                <h1>MoodTunes Playlists</h1>
+                <div class="playlist-grid"onclick="playsong('happy.html')">
+                    <div class="playlist-card" data-playlist="happy">
+                        <img src="playlist/hap.jpg" alt="Happy Playlist">
+                        <h3>Happy Vibes</h3>
+                    </div>
+                    <div id="song-container" class="hidden">
+                        <h2>Playlist Songs</h2>
+                        <ul id="song-list"></ul>
+                    </div>
+                    <div class="playlist-card" data-playlist="sad">
+                        <img src="playlist/mel.jpg" alt="Sad Playlist">
+                        <h3>Melancholy Mix</h3>
+                    </div>
+                    <div class="playlist-card" data-playlist="energetic">
+                        <img src="playlist/en.jpg" alt="Energetic Playlist">
+                        <h3>Energy Boost</h3>
+                    </div>
+                    <div class="playlist-card" data-playlist="chill">
+                        <img src="playlist/cozy.jpg" alt="Chill Playlist">
+                        <h3>Calm & Cozy</h3>
+                    </div>
+                    <div class="playlist-card" data-playlist="trips">
+                        <img src="playlist/road.jpg" alt="trip Playlist">
+                        <h3>Road Trips</h3>
+                    </div>
+                    <div class="playlist-card" data-playlist="party">
+                        <img src="playlist/party.jpg" alt="party Playlist">
+                        <h3>Party Moods</h3>
+                    </div>
+                    <div class="playlist-card" data-playlist="Romantic">
+                        <img src="playlist/ro.jpg" alt="Romantic Playlist">
+                        <h3>Romantic Vibes</h3>
+                    </div>
+                    <div class="playlist-card" data-playlist="workout">
+                        <img src="playlist/out.jpg" alt="workout Playlist">
+                        <h3>Workout Hype</h3>
+                    </div>
+                </div>
+            </section>
+
+            <br>
+            <h2>Trending Songs </h2>
+            <div class="card-container">
+                <div class="card" onclick="playsong(this)"
+                     data-song-title="Paro"
+                     data-song-artist="Aditya Rikhari UNPLG'd"
+                     data-song-src="songs/Aditya Rikhari - Paaro (Official Video) [DxsDekHDKXo].mp3">
+                    <img src="playlist/par.jpg" alt="" class="card-img">
+                    <p class="card-title">Paro</p>
+                    <p class="card-info">Aditya Rikhari UNPLG'd</p>
+                    <audio controls>
+                        <source src="songs/Aditya Rikhari - Paaro (Official Video) [DxsDekHDKXo].mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card" onclick="playsong(this)"
+                     data-song-title="Ticket to Love"
+                     data-song-artist="Abhi Kesla, Bella"
+                     data-song-src="Bella.mp3">
+                    <img src="playlist/bel.jpg" alt="" class="card-img">
+                    <p class="card-title">Ticket to Love</p>
+                    <p class="card-info">Abhi Kesla, Bella</p>
+                    <audio controls>
+                        <source src="Bella.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card" 	onclick="playsong(this)"
+                     data-song-title="Chand"
+                     data-song-artist="Krrish Rao, Swara Verma, Chahat Yahav"
+                     data-song-src="CHAND.mp3">
+                    <img src="./playlist/cha.jpg" alt="" class="card-img">
+                    <p class="card-title">Chand</p>
+                    <p class="card-info">Krrish Rao, Swara Verma, Chahat Yahav</p>
+                    <audio controls>
+                        <source src="CHAND.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card" onclick="playsong(this)"
+                     data-song-title="Husn"
+                     data-song-artist="Anuv Jain"
+                     data-song-src="songs/Anuv Jain - HUSN (Official Video) [gJLVTKhTnog].mp3">
+                    <img src="./playlist/husun.jpg" alt="" class="card-img">
+                    <p class="card-title">Husn</p>
+                    <p class="card-info">Anuv Jain</p>
+                    <audio controls>
+                        <source src="songs/Anuv Jain - HUSN (Official Video) [gJLVTKhTnog].mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card" onclick="playsong(this)"
+                     data-song-title="Finding Her"
+                     data-song-artist="Kushagar,Bharath,Saaheal"
+                     data-song-src="songs/Finding Her (Official Video) _ Kushagra _ Vanshika Kashyap _ Bharath _ UR Debut [3Cp2QTBZAFQ].mp3">
+                    <img src="./playlist/find.jpg" alt="" class="card-img">
+                    <p class="card-title">Finding Her</p>
+                    <p class="card-info">Kushagar,Bharath,Saaheal </p>
+                    <audio controls>
+                        <source src="songs/Finding Her (Official Video) _ Kushagra _ Vanshika Kashyap _ Bharath _ UR Debut [3Cp2QTBZAFQ].mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./playlist/pun.jpg" alt="" class="card-img">
+                    <p class="card-title">hot hit panjabi</p>
+                    <p class="card-info">Catch the hottest Punjabi - by MoodTunes ....</p>
+                </div>
+                <div class="card" onclick="playsong(this)"
+                     data-song-title="Anxiety"
+                     data-song-artist="Doechii"
+                     data-song-src="songs/Doechii - Anxiety (Visualizer) [egemoVK0IKY].mp3">
+                    <img src="./playlist/Anx.jpg" alt="" class="card-img">
+                    <p class="card-title">Anxiety</p>
+                    <p class="card-info">Doechii</p>
+                    <audio controls>
+                        <source src="songs/Doechii - Anxiety (Visualizer) [egemoVK0IKY].mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Recommended for today</h2>
+            <div class="card-container">
+                <div class="card" onclick="playsong(this)"
+                     data-song-title="Halka Halka"
+                     data-song-artist="Sunidhi Chauhan"
+                     data-song-src="songs/song1.mp3">
+                    <img src="playlist/img1.jpg" alt="" class="card-img">
+                    <p class="card-title">Halka Halka</p>
+                    <p class="card-info"> Single by Sunidhi Chauhan</p>
+                    <audio controls>
+                        <source src="songs/song1.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card"onclick="playsong(this)"
+                     data-song-title="Mahahetvali"
+                     data-song-artist="Aditya Gadhvi"
+                     data-song-src="songs/song2.mp3">
+                    <img src="playlist/img2.jpg" alt="" class="card-img">
+                    <p class="card-title">Mahahetvali </p>
+                    <p class="card-info">Mahahetvali - Single by Aditya Gadhvi </p>
+                    <audio controls>
+                        <source src="songs/song2.mp3"type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card"onclick="playsong(this)"
+                     data-song-title="Malang Sajna"
+                     data-song-artist="Sachet Tandon"
+                     data-song-src="songs/song3.mp3">
+                    <img src="playlist/img3.jpg" alt="" class="card-img">
+                    <p class="card-title">Malang Sajna</p>
+                    <p class="card-info">Malang Sajna - Single by Sachet Tandon</p>
+                    <audio controls>
+                        <source src="songs/song3.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card"onclick="playsong(this)"
+                     data-song-title="Tum Prem Ho"
+                     data-song-artist="Mohit gitLalwani"
+                     data-song-src="songs/song4.mp3">
+                    <img src="playlist/img4.jpg" alt="" class="card-img">
+                    <p class="card-title">Tum Prem Ho</p>
+                    <p class="card-info">lyrics by Mohit gitLalwani</p>
+                    <audio controls>
+                        <source src="songs/song4.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card"onclick="playsong(this)"
+                     data-song-title="Moti Veraana"
+                     data-song-artist="Aditya Gadhvi"
+                     data-song-src="songs/song5.mp3">
+                    <img src="playlist/img5.jpg" alt="" class="card-img">
+                    <p class="card-title">Moti Veraana </p>
+                    <p class="card-info">Aditya Gadhvi best audio songs </p>
+                    <audio controls>
+                        <source src="songs/song5.mp3"type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card"onclick="playsong(this)"
+                     data-song-title="Love Ni Bhavai"
+                     data-song-artist="Sachin-jigar,Niren bhatt"
+                     data-song-src="songs/song6.mp3">
+                    <img src="playlist/img6.jpg" alt="" class="card-img">
+                    <p class="card-title">Love Ni Bhavai </p>
+                    <p class="card-info">Sachin-jigar,Niren bhatt</p>
+                    <audio controls>
+                        <source src="songs/song6.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <div class="card"onclick="playsong(this)"
+                     data-song-title="Tari Madh Mithi"
+                     data-song-artist="jigardhan gadhavi"
+                     data-song-src="songs/song7.mp3">
+                    <img src="playlist/img7.jpg" alt="" class="card-img">
+                    <p class="card-title">Tari Madh Mithi </p>
+                    <p class="card-info">jigardhan gadhavi</p>
+                    <audio controls>
+                        <source src="songs/song7.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <h2>Based on your recent listening </h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="playlist/rec.jpg" alt="" class="card-img">
+                    <p class="card-title">Filmy Hangover</p>
+                    <p class="card-info">soothe your hangover with these chill track</p>
+                </div>
+                <div class="card">
+                    <img src="playlist/rec2.jpg" alt="" class="card-img">
+                    <p class="card-title">Amitabh Bhat</p>
+                    <p class="card-info">the essential tracks panned down</p>
+                </div>
+                <div class="card">
+                    <img src="playlist/rec3.jpg" alt="" class="card-img">
+                    <p class="card-title">Starring Ali...</p>
+                    <p class="card-info">essential tracks of alia bhatt all in one </p>
+                </div>
+                <div class="card">
+                    <img src="playlist/rec4.jpg" alt="" class="card-img">
+                    <p class="card-title">Winter of Love</p>
+                    <p class="card-info">get nosy and snuggle with thse hindi...</p>
+                </div>
+            </div>
+            <br>
+
+            <section class="song-list">
+                <h2>Songs</h2>
+                <ul id="song-list-ul">
+                    </ul>
+            </section>
+        </main>
+
         <footer class="player">
             <div class="song-details">
                 <img src="default-song-cover.jpg" alt="Song Cover" id="song-cover">
@@ -40,7 +372,7 @@
                 </div>
             </div>
             <div class="controls">
-                <button id="prev-btn">⏮️</button> 
+                <button id="prev-btn">⏮️</button>
                 <button id="play-pause-btn">▶️</button>
                 <button id="next-btn">⏭️</button>
             </div>
@@ -48,9 +380,12 @@
                 <input type="range" id="progress" min="0" max="100" value="0">
                 <div class="time-left" id="time-left">0:00</div>
             </div>
-            
+
         </footer>
     </div>
+    <br>
+
+
    <script src="script.js"></script>
 </body>
 </html>
