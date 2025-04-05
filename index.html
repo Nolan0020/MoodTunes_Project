@@ -32,6 +32,7 @@
                 <div class="user-profile">
                     <span class="user-name">Ebony</span>
                     <img src="playlist/profile2.png" alt="User Profile" class="profile-pic">
+                    <button id="logout-btn">Logout</button>
                 </div>
             </header>
 
@@ -387,5 +388,12 @@
 
 
    <script src="script.js"></script>
+   <script>
+       document.getElementById('logout-btn').addEventListener('click', function() {
+           alert('You have been logged out.');
+           // Redirect to login page or perform other logout actions
+           window.location.href = 'login.html';
+       });
+   </script>
 </body>
 </html>
