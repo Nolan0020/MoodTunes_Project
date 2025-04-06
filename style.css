@@ -107,6 +107,10 @@ a {
     margin-bottom: 40px;
 }
 
+.search-bar {
+    position: relative; /* Make the search bar the reference point for positioning */
+}
+
 .search-bar input {
     padding: 14px 20px;
     border: none;
@@ -114,6 +118,42 @@ a {
     background-color: #282828;
     color: #e0e0e0;
     width: 400px;
+}
+
+.search-results {
+    position: absolute;
+    top: 60px; /* Adjust based on the height of the search bar */
+    left: 0; /* Align with the left edge of the search bar */
+    width: 400px; /* Match the width of the search bar */
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    max-height: 300px; /* Limit height for scrollable results */
+    overflow-y: auto;
+    display: none; /* Initially hidden */
+}
+
+.search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.search-results li {
+    padding: 10px;
+    border-bottom: 1px solid #282828;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #e0e0e0; /* Text color for search results */
+}
+
+.search-results li:hover {
+    background-color: #282828;
+}
+
+.search-results li:last-child {
+    border-bottom: none;
 }
 
 .user-profile img {

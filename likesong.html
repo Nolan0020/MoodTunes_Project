@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Liked Songs</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,7 +16,7 @@
             const likedSongsList = document.getElementById("liked-songs-list");
             const likedSongs = JSON.parse(localStorage.getItem("likedSongs")) || [];
 
-            likedSongs.forEach((song, index) => {
+            likedSongs.forEach((song) => {
                 const li = document.createElement("li");
                 li.textContent = `${song.title} - ${song.artist}`;
                 li.style.padding = "10px";
@@ -44,8 +44,6 @@
             });
         });
     </script>
-
-
 
 </body>
 </html>

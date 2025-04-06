@@ -27,10 +27,18 @@
         <main class="main-content">
             <header class="header">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search for artists, songs, or podcasts">
+                    <input type="text" id="search-bar" placeholder="Search for artists, songs, or moods">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div id="search-results" class="search-results">
+                    <ul id="search-results-list">
+                        
+                    </ul>
+                    <audio id="audioPlayer" controls></audio>
+
                 </div>
                 <div class="user-profile">
-                    <span class="user-name">Ebony</span>
+                    <span class="user-name"></span>
                     <img src="playlist/profile2.png" alt="User Profile" class="profile-pic">
                     <button id="logout-btn">Logout</button>
                 </div>
@@ -83,42 +91,54 @@
 
             <section class="featured-content">
                 <h1>MoodTunes Playlists</h1>
-                <div class="playlist-grid"onclick="playsong('happy.html')">
+                <div class="playlist-grid">
                     <div class="playlist-card" data-playlist="happy">
-                        <img src="playlist/hap.jpg" alt="Happy Playlist">
-                        <h3>Happy Vibes</h3>
-                    </div>
-                    <div id="song-container" class="hidden">
-                        <h2>Playlist Songs</h2>
-                        <ul id="song-list"></ul>
+                        <a href="happy.html">
+                            <img src="playlist/hap.jpg" alt="Road Trip">
+                            <h3>Happy Vibes😃</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="sad">
+                        <a href="90s.html" >
                         <img src="playlist/mel.jpg" alt="Sad Playlist">
-                        <h3>Melancholy Mix</h3>
+                        <h3>Classic Mood🏛️</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="energetic">
+                        <a href="party.html" >
                         <img src="playlist/en.jpg" alt="Energetic Playlist">
-                        <h3>Energy Boost</h3>
+                        <h3>Party Vibes🪩</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="chill">
+                        <a href="road.html" >
                         <img src="playlist/cozy.jpg" alt="Chill Playlist">
-                        <h3>Calm & Cozy</h3>
+                        <h3>road Trip🛣️</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="trips">
+                        <a href="sad.html" >
                         <img src="playlist/road.jpg" alt="trip Playlist">
-                        <h3>Road Trips</h3>
+                        <h3>Melancholy</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="party">
+                        <a href="sleep.html" >
                         <img src="playlist/party.jpg" alt="party Playlist">
-                        <h3>Party Moods</h3>
+                        <h3>Dreamy</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="Romantic">
+                        <a href="love.html">
                         <img src="playlist/ro.jpg" alt="Romantic Playlist">
-                        <h3>Romantic Vibes</h3>
+                        <h3>Love ChillS</h3>
+                        </a>
                     </div>
                     <div class="playlist-card" data-playlist="workout">
+                        <a href="energy.html" >
                         <img src="playlist/out.jpg" alt="workout Playlist">
-                        <h3>Workout Hype</h3>
+                        <h3>Energy Boost</h3>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -126,16 +146,10 @@
             <br>
             <h2>Trending Songs </h2>
             <div class="card-container">
-                <div class="card" onclick="playsong(this)"
-                     data-song-title="Paro"
-                     data-song-artist="Aditya Rikhari UNPLG'd"
-                     data-song-src="songs/Aditya Rikhari - Paaro (Official Video) [DxsDekHDKXo].mp3">
+                <div class="card" data-song-title="Paro" data-song-artist="Aditya Rikhari UNPLG'd" data-song-src="songs/Aditya Rikhari - Paaro (Official Video) [DxsDekHDKXo].mp3" onclick="playsong(this)">
                     <img src="playlist/par.jpg" alt="" class="card-img">
                     <p class="card-title">Paro</p>
                     <p class="card-info">Aditya Rikhari UNPLG'd</p>
-                    <audio controls>
-                        <source src="songs/Aditya Rikhari - Paaro (Official Video) [DxsDekHDKXo].mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -148,9 +162,6 @@
                     <img src="playlist/bel.jpg" alt="" class="card-img">
                     <p class="card-title">Ticket to Love</p>
                     <p class="card-info">Abhi Kesla, Bella</p>
-                    <audio controls>
-                        <source src="Bella.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -163,9 +174,6 @@
                     <img src="./playlist/cha.jpg" alt="" class="card-img">
                     <p class="card-title">Chand</p>
                     <p class="card-info">Krrish Rao, Swara Verma, Chahat Yahav</p>
-                    <audio controls>
-                        <source src="CHAND.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -178,9 +186,6 @@
                     <img src="./playlist/husun.jpg" alt="" class="card-img">
                     <p class="card-title">Husn</p>
                     <p class="card-info">Anuv Jain</p>
-                    <audio controls>
-                        <source src="songs/Anuv Jain - HUSN (Official Video) [gJLVTKhTnog].mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -193,9 +198,6 @@
                     <img src="./playlist/find.jpg" alt="" class="card-img">
                     <p class="card-title">Finding Her</p>
                     <p class="card-info">Kushagar,Bharath,Saaheal </p>
-                    <audio controls>
-                        <source src="songs/Finding Her (Official Video) _ Kushagra _ Vanshika Kashyap _ Bharath _ UR Debut [3Cp2QTBZAFQ].mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -213,9 +215,6 @@
                     <img src="./playlist/Anx.jpg" alt="" class="card-img">
                     <p class="card-title">Anxiety</p>
                     <p class="card-info">Doechii</p>
-                    <audio controls>
-                        <source src="songs/Doechii - Anxiety (Visualizer) [egemoVK0IKY].mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -232,9 +231,6 @@
                     <img src="playlist/img1.jpg" alt="" class="card-img">
                     <p class="card-title">Halka Halka</p>
                     <p class="card-info"> Single by Sunidhi Chauhan</p>
-                    <audio controls>
-                        <source src="songs/song1.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -247,9 +243,6 @@
                     <img src="playlist/img2.jpg" alt="" class="card-img">
                     <p class="card-title">Mahahetvali </p>
                     <p class="card-info">Mahahetvali - Single by Aditya Gadhvi </p>
-                    <audio controls>
-                        <source src="songs/song2.mp3"type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -262,9 +255,6 @@
                     <img src="playlist/img3.jpg" alt="" class="card-img">
                     <p class="card-title">Malang Sajna</p>
                     <p class="card-info">Malang Sajna - Single by Sachet Tandon</p>
-                    <audio controls>
-                        <source src="songs/song3.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -277,9 +267,6 @@
                     <img src="playlist/img4.jpg" alt="" class="card-img">
                     <p class="card-title">Tum Prem Ho</p>
                     <p class="card-info">lyrics by Mohit gitLalwani</p>
-                    <audio controls>
-                        <source src="songs/song4.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -292,9 +279,6 @@
                     <img src="playlist/img5.jpg" alt="" class="card-img">
                     <p class="card-title">Moti Veraana </p>
                     <p class="card-info">Aditya Gadhvi best audio songs </p>
-                    <audio controls>
-                        <source src="songs/song5.mp3"type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -307,9 +291,6 @@
                     <img src="playlist/img6.jpg" alt="" class="card-img">
                     <p class="card-title">Love Ni Bhavai </p>
                     <p class="card-info">Sachin-jigar,Niren bhatt</p>
-                    <audio controls>
-                        <source src="songs/song6.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -322,9 +303,6 @@
                     <img src="playlist/img7.jpg" alt="" class="card-img">
                     <p class="card-title">Tari Madh Mithi </p>
                     <p class="card-info">jigardhan gadhavi</p>
-                    <audio controls>
-                        <source src="songs/song7.mp3" type="audio/mpeg">
-                    </audio>
                     <div class="card-actions">
                         <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
@@ -360,7 +338,8 @@
             <section class="song-list">
                 <h2>Songs</h2>
                 <ul id="song-list-ul">
-                    </ul>
+                    <!-- Songs will be dynamically added here -->
+                </ul>
             </section>
         </main>
 
@@ -373,26 +352,153 @@
                 </div>
             </div>
             <div class="controls">
-                <button id="prev-btn">⏮️</button>
-                <button id="play-pause-btn">▶️</button>
-                <button id="next-btn">⏭️</button>
+                <button id="prev-btn" onclick="playPreviousSong()">⏮</button>
+                <button id="play-pause-btn" onclick="togglePlayPause()">▶</button>
+                <button id="next-btn" onclick="playNextSong()">⏭</button>
             </div>
             <div class="progress-bar">
                 <input type="range" id="progress" min="0" max="100" value="0">
                 <div class="time-left" id="time-left">0:00</div>
             </div>
-
         </footer>
+        <footer class="player">
+        </footer>
+    <audio id="audioPlayer"></audio>
+    </div>
     </div>
     <br>
 
 
    <script src="script.js"></script>
    <script>
-       document.getElementById('logout-btn').addEventListener('click', function() {
+       function performSearch() {
+           const query = document.getElementById('search-bar').value.trim().toLowerCase();
+           const resultsList = document.getElementById('search-results-list');
+           resultsList.innerHTML = ''; // Clear previous results
+
+           if (!query) {
+               resultsList.innerHTML = '<li>No results found. Please enter a search term.</li>';
+               return;
+           }
+
+           const results = searchSongs(query); // Calls the searchSongs function from library.js
+
+           if (results.length === 0) {
+               resultsList.innerHTML = '<li>No results found.</li>';
+           } else {
+               results.forEach(song => {
+                   const li = document.createElement('li');
+                   li.textContent = `${song.title} - ${song.artist || 'Unknown Artist'} (${song.mood})`;
+                   li.style.cursor = 'pointer';
+                   li.dataset.songTitle = song.title;
+                   li.dataset.songArtist = song.artist || 'Unknown Artist';
+                   li.dataset.songSrc = song.src || '';
+                   li.dataset.songCover = song.cover || 'default-song-cover.jpg';
+
+                   li.addEventListener('click', () => {
+                       const songData = {
+                           title: li.dataset.songTitle,
+                           artist: li.dataset.songArtist,
+                           src: li.dataset.songSrc,
+                           cover: li.dataset.songCover
+                       };
+                       playSong(songData); // Use the playSong function from script.js
+                   });
+
+                   resultsList.appendChild(li);
+               });
+           }
+       }
+
+       document.getElementById('search-btn').addEventListener('click', performSearch);
+
+       document.getElementById('search-bar').addEventListener('keypress', function (event) {
+           if (event.key === 'Enter') {
+               performSearch();
+           }
+       });
+
+       document.getElementById('logout-btn').addEventListener('click', function () {
            alert('You have been logged out.');
-           // Redirect to login page or perform other logout actions
            window.location.href = 'login.html';
+       });
+   </script>
+   <script src="serach.js"></script>
+   <script>
+       const playlists = JSON.parse(localStorage.getItem('moodTunesPlaylists')) || {}; // Retrieve playlists from localStorage
+       const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || []; // Retrieve liked songs from localStorage
+
+       // Initialize liked state for songs
+       document.querySelectorAll('.like-song-btn').forEach(button => {
+           const songCard = button.closest('.card');
+           const songTitle = songCard.dataset.songTitle;
+           const songArtist = songCard.dataset.songArtist;
+
+           const isSongAlreadyLiked = likedSongs.some(
+               song => song.title === songTitle && song.artist === songArtist
+           );
+
+           if (isSongAlreadyLiked) {
+               button.classList.add('liked');
+               button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+           }
+       });
+
+       document.querySelectorAll('.add-to-playlist-btn').forEach(button => {
+           button.addEventListener('click', event => {
+               event.stopPropagation();
+               const songCard = button.closest('.card');
+               const songTitle = songCard.dataset.songTitle;
+               const songArtist = songCard.dataset.songArtist;
+               const songSrc = songCard.dataset.songSrc;
+
+               const playlistName = prompt("Enter playlist name (existing or new):");
+               if (playlistName) {
+                   if (!playlists[playlistName]) {
+                       playlists[playlistName] = { name: playlistName, songs: [] };
+                   }
+                   const isSongAlreadyInPlaylist = playlists[playlistName].songs.some(
+                       song => song.title === songTitle && song.artist === songArtist
+                   );
+                   if (!isSongAlreadyInPlaylist) {
+                       playlists[playlistName].songs.push({ title: songTitle, artist: songArtist, src: songSrc });
+                       alert(`Added "${songTitle}" to the playlist "${playlistName}".`);
+                   } else {
+                       alert(`"${songTitle}" is already in the playlist "${playlistName}".`);
+                   }
+                   localStorage.setItem('moodTunesPlaylists', JSON.stringify(playlists)); // Save playlists to localStorage
+               }
+           });
+       });
+
+       document.querySelectorAll('.like-song-btn').forEach(button => {
+           button.addEventListener('click', event => {
+               event.stopPropagation();
+               const songCard = button.closest('.card');
+               const songTitle = songCard.dataset.songTitle;
+               const songArtist = songCard.dataset.songArtist;
+               const songSrc = songCard.dataset.songSrc;
+
+               button.classList.toggle('liked');
+               if (button.classList.contains('liked')) {
+                   button.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                   const isSongAlreadyLiked = likedSongs.some(
+                       song => song.title === songTitle && song.artist === songArtist
+                   );
+                   if (!isSongAlreadyLiked) {
+                       likedSongs.push({ title: songTitle, artist: songArtist, src: songSrc });
+                   }
+               } else {
+                   button.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                   const index = likedSongs.findIndex(
+                       song => song.title === songTitle && song.artist === songArtist
+                   );
+                   if (index !== -1) {
+                       likedSongs.splice(index, 1);
+                   }
+               }
+               localStorage.setItem('likedSongs', JSON.stringify(likedSongs)); // Save liked songs to localStorage
+           });
        });
    </script>
 </body>

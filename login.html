@@ -225,31 +225,34 @@ form{
 
 
 <script>
-    
 function validateLogin() {
-            let username = document.getElementById("username").value.trim();
-            let password = document.getElementById("password").value.trim();
-            let msg = document.getElementById("msg");
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let msg = document.getElementById("msg");
 
-            // Hardcoded credentials for verification (you can change them)
-            const validUsername = "ebony";
-            const validPassword = "eby2918";
+    // Built-in usernames and passwords
+    const users = [
+    { username: "Amey", password: "Amey25" },
+        { username: "ebony", password: "eby2918" },
+        { username: "nolan", password: "nol123" },
+        { username: "divya", password: "div56" },
+        { username: "saima", password: "sai654" },
+        { username: "guest", password: "guest000" },
+        { username: "mike", password: "mike321" }, 
+        { username: "admin", password: "admin123" } 
+    ];
+    // Check if the username and password match any of the built-in users
+    const user = users.find(u => u.username === username && u.password === password);
+    if (!user) {
+        msg.innerText = "Invalid username or password!";
+        return false;
+    }
 
-            if (username === "" || password === "") {
-                msg.innerText = "Username and password cannot be empty!";
-                return false; // Prevent form submission
-            }
-
-            if (username !== validUsername || password !== validPassword) {
-                msg.innerText = "Invalid username or password!";
-                return false; // Prevent form submission
-            }
-
-            // If login is successful, redirect to index.html
-            alert(`Welcome ${username}! Redirecting to the homepage.`);
-            window.location.href = "index.html";
-            return false; // Prevent form submission to avoid refreshing the page
-        }
+    // If login is successful, redirect to index.html
+    alert(`Welcome ${username}! Redirecting to the homepage.`);
+    window.location.href = "index.html";
+    return false; // Prevent form submission to avoid refreshing the page
+}
 </script>
 </head>
 <body>

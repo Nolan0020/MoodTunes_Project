@@ -8,6 +8,9 @@ body {
     font-size: 16px;
     line-height: 1.6;
 }
+.main-content{
+    width: 100px;
+}
 
 a {
     color: #b3b3b3; /* Softer link color */

@@ -14,11 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtnFooter = document.getElementById('prev-btn');
     const nextBtnFooter = document.getElementById('next-btn');
     const audioPlayer = document.getElementById('audio-player');
+    const progress = document.getElementById('progress');
+    const timeLeftDisplay = document.getElementById('time-left');
     let currentPlayingSong = null;
     let isPlayingFooter = false;
     let playlistsData = {};
     let currentPlaylistId = null;
     let currentSongIndex = -1;
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${minutes}:${remainingSeconds}`;
+    }
 
     function loadPlaylists() {
         const storedPlaylists = localStorage.getItem('moodTunesPlaylists');
@@ -113,6 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
         playerSongTitle.textContent = song.title;
         playerSongArtist.textContent = song.artist;
         updateActiveSongInList(index);
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            timeLeftDisplay.textContent = formatTime(audioPlayer.duration);
+        }, { once: true });
     }
 
     function playNextSong() {
@@ -128,6 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (playPauseBtnFooter) {
                     playPauseBtnFooter.innerHTML = '<i class="fa-solid fa-play"></i>';
                 }
+                progress.value = 0;
+                timeLeftDisplay.textContent = '0:00';
             }
         }
     }
@@ -160,9 +173,11 @@ document.addEventListener('DOMContentLoaded', function() {
         emptyPlaylistMessage.textContent = 'No playlist selected.';
         currentSongIndex = -1;
         updateDeleteButtonVisibility();
-        player.style.display = 'none'; // Hide player when no playlist is selected
+        player.style.display = 'none';
         audioPlayer.pause();
         audioPlayer.currentTime = 0;
+        progress.value = 0;
+        timeLeftDisplay.textContent = '0:00';
         currentPlayingSong = null;
         if (playPauseBtnFooter) {
             playPauseBtnFooter.innerHTML = '<i class="fa-solid fa-play"></i>';
@@ -192,6 +207,26 @@ document.addEventListener('DOMContentLoaded', function() {
             deletePlaylistBtn.style.display = 'none';
         }
     }
+
+    audioPlayer.addEventListener('timeupdate', () => {
+        if (audioPlayer.duration) {
+            const progressValue = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progress.value = progressValue;
+            timeLeftDisplay.textContent = formatTime(audioPlayer.duration - audioPlayer.currentTime);
+        } else {
+            progress.value = 0;
+            timeLeftDisplay.textContent = '0:00';
+        }
+    });
+
+    progress.addEventListener('input', () => {
+        const seekTime = (progress.value / 100) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+    });
+
+    audioPlayer.addEventListener('loadedmetadata', () => {
+        timeLeftDisplay.textContent = formatTime(audioPlayer.duration);
+    });
 
     if (playPauseBtnFooter) {
         playPauseBtnFooter.addEventListener('click', () => {
