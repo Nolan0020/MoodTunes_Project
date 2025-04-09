@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoodTunes</title>
+    <link rel="stylesheet" href="Playlistsong.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -34,8 +35,6 @@
                     <ul id="search-results-list">
                         
                     </ul>
-                    <audio id="audioPlayer" controls></audio>
-
                 </div>
                 <div class="user-profile">
                     <span class="user-name"></span>
@@ -94,53 +93,60 @@
                 <div class="playlist-grid">
                     <div class="playlist-card" data-playlist="happy">
                         <a href="happy.html">
-                            <img src="playlist/hap.jpg" alt="Road Trip">
+                            <img src="playlist/happpp.jpg" alt="Road Trip">
                             <h3>Happy Vibes😃</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="sad">
                         <a href="90s.html" >
-                        <img src="playlist/mel.jpg" alt="Sad Playlist">
+                        <img src="playlist/900.jpg" alt="Sad Playlist">
                         <h3>Classic Mood🏛️</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="energetic">
                         <a href="party.html" >
-                        <img src="playlist/en.jpg" alt="Energetic Playlist">
+                        <img src="playlist/partyy.jpg" alt="Energetic Playlist">
                         <h3>Party Vibes🪩</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="chill">
                         <a href="road.html" >
-                        <img src="playlist/cozy.jpg" alt="Chill Playlist">
+                        <img src="playlist/rooood.jpg" alt="Chill Playlist">
                         <h3>road Trip🛣️</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="trips">
                         <a href="sad.html" >
-                        <img src="playlist/road.jpg" alt="trip Playlist">
-                        <h3>Melancholy</h3>
+                        <img src="playlist/saddd.jpg" alt="trip Playlist">
+                        <h3>Melancholy🥲</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="party">
                         <a href="sleep.html" >
-                        <img src="playlist/party.jpg" alt="party Playlist">
-                        <h3>Dreamy</h3>
+                        <img src="playlist/sleeee.jpg" alt="party Playlist">
+                        <h3>Dreamy💤</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="Romantic">
                         <a href="love.html">
-                        <img src="playlist/ro.jpg" alt="Romantic Playlist">
-                        <h3>Love ChillS</h3>
+                        <img src="playlist/lovvvvvvv.jpg" alt="Romantic Playlist">
+                        <h3>Love ChillS🌹</h3>
                         </a>
                     </div>
                     <div class="playlist-card" data-playlist="workout">
                         <a href="energy.html" >
-                        <img src="playlist/out.jpg" alt="workout Playlist">
-                        <h3>Energy Boost</h3>
+                        <img src="playlist/ener.jpg" alt="workout Playlist">
+                        <h3>Energy Boost⚡</h3>
                         </a>
                     </div>
                 </div>
+            </section>
+
+            <section class="song-list">
+                <h2>Songs</h2>
+                <ul id="song-list-ul">
+                    <!-- Songs will be dynamically added here -->
+                </ul>
             </section>
 
             <br>
@@ -203,10 +209,17 @@
                         <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card" onclick="playsong(this)"
+                data-song-title="hot hit panjabi"
+                data-song-artist="karan Aujla"
+                data-song-src="songs/karan Aujla - hot hit panjabi (Official Video) [2X0v1x4g3aE].mp3">
                     <img src="./playlist/pun.jpg" alt="" class="card-img">
                     <p class="card-title">hot hit panjabi</p>
                     <p class="card-info">Catch the hottest Punjabi - by MoodTunes ....</p>
+                    <div class="card-actions">
+                        <span class="add-to-playlist-btn"><i class="fa-solid fa-plus"></i></span>
+                        <span class="like-song-btn"><i class="fa-regular fa-heart"></i></span>
+                    </div>
                 </div>
                 <div class="card" onclick="playsong(this)"
                      data-song-title="Anxiety"
@@ -335,12 +348,7 @@
             </div>
             <br>
 
-            <section class="song-list">
-                <h2>Songs</h2>
-                <ul id="song-list-ul">
-                    <!-- Songs will be dynamically added here -->
-                </ul>
-            </section>
+            
         </main>
 
         <footer class="player">
@@ -360,8 +368,6 @@
                 <input type="range" id="progress" min="0" max="100" value="0">
                 <div class="time-left" id="time-left">0:00</div>
             </div>
-        </footer>
-        <footer class="player">
         </footer>
     <audio id="audioPlayer"></audio>
     </div>

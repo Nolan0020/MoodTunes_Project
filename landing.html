@@ -13,18 +13,33 @@
     </head>
     <body>
         <nav>
-            <div class="logo">
+            <div class="nav-top">
+              <div class="logo">
                 <img src="playlist/logo.png" alt="Company logo">
               </div>
-            <div class="nav_links">
-                <a href="#">Premium</a>
-                <a href="#">Support</a>
-                <a href="#">Download</a>
-                <span class="line"></span>
-                <a href="login.html">Log in</a>
+              <div class="hamburger" onclick="toggleMenu()">
+                &#9776;
+              </div>
             </div>
-        </nav>
+          
+            <div class="nav_links" id="navLinks">
+              <a href="#">Premium</a>
+              <a href="#">Support</a>
+              <a href="#">Download</a>
+              <span class="line"></span>
+              <a href="login.html">LogIn</a>
+            </div>
+          </nav>
+          
         <!-- nav is done -->
+        <script>
+            function toggleMenu() {
+              const navLinks = document.getElementById('navLinks');
+              navLinks.classList.toggle('active');
+            }
+          </script>
+
+
         <div class="content">
             <div class="circle circle1"></div>
             <div class="circle circle2"></div>

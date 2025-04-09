@@ -221,6 +221,75 @@ form{
 .forgot-Psd:hover{
   color:#1db954;
 }
+
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 0 5%;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  form {
+    width: 90%;
+    max-width: 320px;
+    padding: 20px;
+    margin-top: 150px;
+    box-shadow: 0 0 25px #000;
+  }
+
+  .main-logo {
+    position: absolute;
+    width: 70px;
+    top: 40px;
+    left: 40%;
+  }
+
+  .sign-box {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .inp-Box {
+    font-size: 1em;
+    padding: 8px 15px;
+  }
+
+  .submit {
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .forgot-Psd {
+    font-size: 0.9em;
+  }
+
+  .note {
+    font-size: 0.8em;
+    bottom: 5px;
+    left: 5px;
+    
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px){
+  .main-logo{
+    width: 90px;
+    top: 30px;
+    left: 43%;
+  }
+
+  form {
+    width: 95%;
+  }
+
+}
+
+
+
+
     </style>
 
 
@@ -239,8 +308,8 @@ function validateLogin() {
         { username: "saima", password: "sai654" },
         { username: "guest", password: "guest000" },
         { username: "mike", password: "mike321" }, 
-        { username: "admin", password: "admin123" } 
-    ];
+        { username: "admin", password: "admin123" } 
+    ];
     // Check if the username and password match any of the built-in users
     const user = users.find(u => u.username === username && u.password === password);
     if (!user) {
@@ -249,7 +318,7 @@ function validateLogin() {
     }
 
     // If login is successful, redirect to index.html
-    alert(`Welcome ${username}! Redirecting to the homepage.`);
+    alert(`Welcome ${user.username}! Redirecting to the homepage.`);
     window.location.href = "index.html";
     return false; // Prevent form submission to avoid refreshing the page
 }

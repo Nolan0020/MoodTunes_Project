@@ -135,12 +135,11 @@ body {
 }
 
 .controls button {
+    font-size: 2rem; /* Increase button size */
+    padding: 1.2rem 2rem; /* Increase padding for larger buttons */
     background: linear-gradient(to right, #00ffcc, #00aaff);
     border: none;
-    font-size: 1.5rem;
-    padding: 0.8rem 1.2rem;
     border-radius: 5px;
-    margin: 0 0.5rem;
     cursor: pointer;
     color: #000;
     box-shadow: 0 2px 4px rgba(0, 255, 204, 0.3);
@@ -148,7 +147,7 @@ body {
 }
 
 .controls button:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Slightly enlarge buttons on hover */
 }
 
 .progress-bar {
@@ -156,32 +155,32 @@ body {
     display: flex;
     align-items: center;
     margin-left: 2rem;
+    width: 90%; /* Increase width */
 }
 
 #progress {
     flex-grow: 1;
     -webkit-appearance: none;
     appearance: none;
-    background: rgba(0, 255, 204, 0.3);
-    height: 10px;
-    border-radius: 5px;
+    background: rgba(0, 255, 204, 0.5); /* Slightly brighter background */
+    height: 15px; /* Increase height */
+    border-radius: 10px; /* Make it more rounded */
     outline: none;
 }
 
 #progress::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 25px; /* Larger thumb size */
+    height: 25px;
     background: #00ffcc;
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.2s ease;
-    box-shadow: 0 0 8px #00ffcc;
+    box-shadow: 0 0 10px #00ffcc;
 }
 
 #progress::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
+    transform: scale(1.2); /* Slightly enlarge thumb on hover */
 }
 
 #time-left {
@@ -203,29 +202,5 @@ body {
         margin-top: 1rem;
     }
     
-    #shuffle-btn,
-#repeat-btn {
-    background: linear-gradient(to right, #00ffcc, #00aaff);
-    border: none;
-    font-size: 1.5rem;
-    padding: 0.8rem 1.2rem;
-    border-radius: 5px;
-    margin: 0 0.5rem;
-    cursor: pointer;
-    color: #000;
-    box-shadow: 0 2px 4px rgba(0, 255, 204, 0.3);
-    transition: transform 0.2s ease;
-}
-
-#shuffle-btn:hover,
-#repeat-btn:hover {
-    transform: scale(1.05);
-}
-
-#shuffle-btn.active,
-#repeat-btn.active {
-    background: linear-gradient(to right, #ff6600, #ff9933);
-    color: #fff;
-}
-
+    
 }

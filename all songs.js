@@ -77,16 +77,31 @@ window.onload = function () {
         audio.load();
     }
 
+    function saveToHistory(song) {
+        let history = JSON.parse(localStorage.getItem("history")) || [];
+
+        if (history.length === 0 || history[history.length - 1].title !== song.title) {
+            history.push(song);
+        }
+
+        if (history.length > 10) {
+            history = history.slice(history.length - 10);
+        }
+
+        localStorage.setItem("history", JSON.stringify(history));
+    }
+
     function playSong() {
         audio.play();
         isPlaying = true;
-        playPauseBtn.textContent = "⏸️";
+        playPauseBtn.textContent = "⏸";
+        saveToHistory(songs[currentSongIndex]); // Save to history when the song starts playing
     }
 
     function pauseSong() {
         audio.pause();
         isPlaying = false;
-        playPauseBtn.textContent = "▶️";
+        playPauseBtn.textContent = "▶";
     }
 
     function playPause() {
@@ -103,6 +118,16 @@ window.onload = function () {
         currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
         loadSong(currentSongIndex);
         playSong();
+    }
+
+    function saveSongToPlaylist(song, playlistName) {
+        let playlists = JSON.parse(localStorage.getItem("moodTunesPlaylists")) || {};
+        if (!playlists[playlistName]) {
+            playlists[playlistName] = { name: playlistName, songs: [] };
+        }
+        playlists[playlistName].songs.push(song);
+        localStorage.setItem("moodTunesPlaylists", JSON.stringify(playlists));
+        alert(`"${song.title}" added to playlist "${playlistName}"`);
     }
 
     audio.addEventListener("timeupdate", () => {
@@ -157,7 +182,25 @@ window.onload = function () {
             localStorage.setItem("likedSongs", JSON.stringify(likedSongs));
         });
 
+        // Add to Playlist Button
+        const addToPlaylistBtn = document.createElement("button");
+        addToPlaylistBtn.innerHTML = '<i class="fa-solid fa-plus"></i>';
+        addToPlaylistBtn.style.border = "none";
+        addToPlaylistBtn.style.background = "transparent";
+        addToPlaylistBtn.style.cursor = "pointer";
+        addToPlaylistBtn.style.marginLeft = "10px";
+        addToPlaylistBtn.style.fontSize = "18px";
+
+        addToPlaylistBtn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const playlistName = prompt("Enter playlist name:");
+            if (playlistName) {
+                saveSongToPlaylist(song, playlistName);
+            }
+        });
+
         li.appendChild(likeBtn);
+        li.appendChild(addToPlaylistBtn);
         songList.appendChild(li);
     });
 
@@ -168,3 +211,4 @@ window.onload = function () {
         alert("Failed to load audio file.");
     });
 };
+

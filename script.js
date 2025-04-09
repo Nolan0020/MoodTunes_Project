@@ -62,6 +62,7 @@ window.onload=function(){
         isPlaying = true;
         playPauseBtn.textContent = '⏸';
         saveToHistory(songs[currentSongIndex]); // Save to history when the song starts playing
+        recommendSongs(songs[currentSongIndex]); // Recommend songs based on the current song
     }
     
     function pauseSong() {
@@ -182,6 +183,64 @@ window.onload=function(){
         alert('Failed to load audio file.');
     });
 
+    function recommendSongs(currentSong) {
+        const recommendationsContainer = document.getElementById('recommendations-container');
+        recommendationsContainer.innerHTML = ''; // Clear previous recommendations
+
+        const recommendedSongs = songs.filter(song => song.artist === currentSong.artist && song.title !== currentSong.title);
+
+        if (recommendedSongs.length === 0) {
+            recommendationsContainer.innerHTML = '<p>No recommendations available for this song.</p>';
+        } else {
+            recommendedSongs.forEach(song => {
+                const songCard = document.createElement('div');
+                songCard.classList.add('card');
+                songCard.dataset.songSrc = song.src;
+                songCard.dataset.songTitle = song.title;
+                songCard.dataset.songArtist = song.artist;
+
+                const songImg = document.createElement('img');
+                songImg.src = song.cover;
+                songImg.alt = song.title;
+                songImg.classList.add('card-img');
+
+                const songTitle = document.createElement('p');
+                songTitle.textContent = song.title;
+                songTitle.classList.add('card-title');
+
+                const songArtist = document.createElement('p');
+                songArtist.textContent = song.artist;
+                songArtist.classList.add('card-info');
+
+                const playNextBtn = document.createElement('button');
+                playNextBtn.textContent = 'Play This Song Next';
+                playNextBtn.classList.add('play-next-btn');
+                playNextBtn.style.marginTop = '10px';
+                playNextBtn.style.padding = '8px 12px';
+                playNextBtn.style.border = 'none';
+                playNextBtn.style.borderRadius = '5px';
+                playNextBtn.style.cursor = 'pointer';
+                playNextBtn.style.backgroundColor = '#1db954';
+                playNextBtn.style.color = '#fff';
+
+                playNextBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    songs.splice(currentSongIndex + 1, 0, song); // Insert the song to play next
+                    alert(`"${song.title}" will play next.`);
+                });
+
+                songCard.appendChild(songImg);
+                songCard.appendChild(songTitle);
+                songCard.appendChild(songArtist);
+                songCard.appendChild(playNextBtn);
+
+                songCard.addEventListener('click', () => playsong(songCard));
+
+                recommendationsContainer.appendChild(songCard);
+            });
+        }
+    }
+
     function playsong(card) {
         const songSrc = card.dataset.songSrc;
         const songTitleText = card.dataset.songTitle;
@@ -198,6 +257,14 @@ window.onload=function(){
             isPlaying = true;
             playPauseBtn.textContent = '⏸';
             saveToHistory({ title: songTitleText, artist: songArtistText, src: songSrc, cover: songCoverSrc });
+            recommendSongs({ title: songTitleText, artist: songArtistText }); // Recommend songs based on the current song
+
+            // Check if the song is "happy" or "sad"
+            if (songTitleText.toLowerCase().includes('happy')) {
+                alert('You are playing a happy song! Enjoy the vibes! 🎉');
+            } else if (songTitleText.toLowerCase().includes('sad')) {
+                alert('You are playing a sad song. Hope you feel better soon! 💔');
+            }
         } else {
             alert('Song source not available.');
         }

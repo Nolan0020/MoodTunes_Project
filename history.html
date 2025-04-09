@@ -11,15 +11,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start; /* Align items at the top */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
             background-color: #121212;
             color: #e0e0e0;
             font-size: 16px;
             line-height: 1.6;
+            overflow-y: auto; /* Enable vertical scrolling for the body */
         }
 
         h2 {
+            margin-top: 30px; /* Add some top margin */
             margin-bottom: 20px;
         }
 
@@ -28,6 +30,12 @@
             padding: 0;
             width: 80%;
             max-width: 500px;
+            /* Remove fixed height to allow scrolling */
+            /* height: 400px; */
+            overflow-y: auto; /* Enable vertical scrolling for the list */
+            border: 1px solid #333; /* Optional: Add a border to visually contain the list */
+            border-radius: 5px;
+            margin-bottom: 20px; /* Add some bottom margin */
         }
 
         #history-list li {
@@ -48,43 +56,116 @@
         }
 
         .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Make container take full width */
-  }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; /* Make container take full width */
+            padding: 20px; /* Add some padding around the container */
+        }
 
-  .container a {
-    display: inline-block;
-    margin-top: 30px; /* Increased top margin */
-    padding: 12px 20px; /* Increased padding */
-    background-color: #1db954;
-    color: white;
-    border-radius: 8px; /* More rounded corners */
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-  }
+        .container a {
+            display: inline-block;
+            margin-top: 20px; /* Adjusted top margin */
+            padding: 12px 20px; /* Increased padding */
+            background-color: #1db954;
+            color: white;
+            border-radius: 8px; /* More rounded corners */
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
 
-  .container a:hover {
-    background-color: #1aa34a;
-  }
+        .container a:hover {
+            background-color: #1aa34a;
+        }
 
         #clear-history-btn {
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-#clear-history-btn:hover {
-    background-color: #e33e3e;
-}
+        #clear-history-btn:hover {
+            background-color: #e33e3e;
+        }
 
+        .player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #232323;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: none;
+        }
+
+        .player-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .middle-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .right-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .player .progress-bar input {
+            width: 100%;
+        }
+
+        .controls button {
+            font-size: 2rem; /* Increase button size */
+            padding: 1.2rem 2rem; /* Increase padding for larger buttons */
+        }
+
+        .progress-bar input {
+            width: 1000%; /* Increase width of the progress bar */
+            height: 25px; /* Increase height */
+            border-radius: 10px; /* Make it more rounded */
+            background: rgba(0, 255, 204, 0.5); /* Slightly brighter background */
+        }
+
+        .progress-bar input::-webkit-slider-thumb {
+            width: 100px; /* Larger thumb size */
+            height: 25px;
+            background: #00ffcc;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        .progress-bar input::-moz-range-thumb {
+            width: 25px; /* Larger thumb size */
+            height: 25px;
+            background: #00ffcc;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        .progress-bar input:hover::-webkit-slider-thumb,
+        .progress-bar input:hover::-moz-range-thumb {
+            transform: scale(1.2); /* Slightly enlarge thumb on hover */
+        }
     </style>
 </head>
 <body>
@@ -96,8 +177,152 @@
     </div>
     <button id="clear-history-btn">Clear History</button>
 
+    <!-- Player Section -->
+    <div class="player" style="width: 100%; max-width: none;">
+        <div class="player-layout">
+            <!-- Left Section: Cover Image and Title -->
+            <div class="left-section">
+                <img id="player-song-cover" src="default-song-cover.jpg" alt="Song Cover" width="60" height="60" style="border-radius: 5px; margin-right: 10px;">
+                <div>
+                    <h4 id="player-song-title">No Song Playing</h4>
+                    <p id="player-song-artist">Unknown Artist</p>
+                </div>
+            </div>
+
+            <!-- Middle Section: Controls and Progress Bar -->
+            <div class="middle-section">
+                <div class="controls">
+                    <button id="prev-btn">⏮</button>
+                    <button id="play-btn">▶</button>
+                    <button id="next-btn">⏭</button>
+                </div>
+                <div class="progress-bar">
+                    <input id="progress-bar" type="range" value="0" min="0" max="100">
+                </div>
+            </div>
+
+            <!-- Right Section: Timer -->
+            <div class="right-section">
+                <span id="time-left">0:00</span>
+            </div>
+        </div>
+    </div>
+
     <script src="history.js"></script>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const historyList = document.getElementById("history-list");
+            const clearHistoryBtn = document.getElementById("clear-history-btn");
+            const history = JSON.parse(localStorage.getItem("history")) || [];
+            let currentSongIndex = 0;
+            let currentAudio = null;
+
+            function loadSong(index) {
+                if (index >= 0 && index < history.length) {
+                    const song = history[index];
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                    }
+                    currentAudio = new Audio(song.src);
+                    document.getElementById("player-song-title").textContent = song.title || "Unknown Title";
+                    document.getElementById("player-song-artist").textContent = song.artist || "Unknown Artist";
+                    document.getElementById("player-song-cover").src = song.cover || "default-song-cover.jpg";
+                    currentAudio.addEventListener("timeupdate", updateProgressBar);
+                    currentAudio.addEventListener("ended", nextSong);
+                }
+            }
+
+            function updateProgressBar() {
+                const progressBar = document.getElementById("progress-bar");
+                const timeLeft = document.getElementById("time-left");
+                if (currentAudio && currentAudio.duration) {
+                    progressBar.value = currentAudio.currentTime;
+                    progressBar.max = currentAudio.duration;
+                    const minutes = Math.floor(currentAudio.currentTime / 60);
+                    const seconds = Math.floor(currentAudio.currentTime % 60);
+                    timeLeft.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }
+
+            function playCurrentSong() {
+                if (currentAudio) {
+                    currentAudio.play();
+                    document.getElementById("play-btn").textContent = "⏸";
+                }
+            }
+
+            function pauseCurrentSong() {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    document.getElementById("play-btn").textContent = "▶";
+                }
+            }
+
+            function nextSong() {
+                currentSongIndex = (currentSongIndex + 1) % history.length;
+                loadSong(currentSongIndex);
+                playCurrentSong();
+            }
+
+            function prevSong() {
+                currentSongIndex = (currentSongIndex - 1 + history.length) % history.length;
+                loadSong(currentSongIndex);
+                playCurrentSong();
+            }
+
+            document.getElementById("play-btn").addEventListener("click", () => {
+                if (currentAudio) {
+                    if (currentAudio.paused) {
+                        playCurrentSong();
+                    } else {
+                        pauseCurrentSong();
+                    }
+                }
+            });
+
+            document.getElementById("next-btn").addEventListener("click", nextSong);
+            document.getElementById("prev-btn").addEventListener("click", prevSong);
+
+            document.getElementById("progress-bar").addEventListener("input", (e) => {
+                if (currentAudio) {
+                    currentAudio.currentTime = e.target.value;
+                }
+            });
+
+            history.forEach((song, index) => {
+                const li = document.createElement("li");
+
+                const songCover = document.createElement("img");
+                songCover.src = song.cover || "default-song-cover.jpg";
+                songCover.alt = song.title || "No Title";
+                li.appendChild(songCover);
+
+                const songInfo = document.createElement("div");
+                songInfo.innerHTML = `<strong>${song.title || "Unknown Title"}</strong><br>${song.artist || "Unknown Artist"}`;
+                li.appendChild(songInfo);
+
+                li.addEventListener("click", () => {
+                    currentSongIndex = index;
+                    loadSong(currentSongIndex);
+                    playCurrentSong();
+                });
+
+                historyList.appendChild(li);
+            });
+
+            clearHistoryBtn.addEventListener("click", () => {
+                localStorage.removeItem("history");
+                historyList.innerHTML = "<p>No songs played yet.</p>";
+                alert("History cleared!");
+            });
+
+            if (history.length > 0) {
+                loadSong(currentSongIndex);
+            }
+        });
+    </script>
 
 </body>
 </html>

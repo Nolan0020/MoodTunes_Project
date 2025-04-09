@@ -3,45 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Liked Songs</title>
-    <link rel="stylesheet" href="style.css">
+    <title>♥️Liked Songs</title>
+    <link rel="stylesheet" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: linear-gradient(160deg, #004d40, #000000); /* Deep teal to black */
+            color: #e0f7fa; /* Light cyan */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-bottom: 80px; /* Space for the fixed player */
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: #aeea00; /* Lime green */
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        #liked-songs-list {
+            list-style: none;
+            padding: 0;
+            width: 95%;
+            max-width: 700px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+        }
+
+        #liked-songs-list li {
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 230, 118, 0.2); /* Light green divider */
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        #liked-songs-list li:last-child {
+            border-bottom: none;
+        }
+
+        #liked-songs-list li:hover {
+            background-color: rgba(0, 230, 118, 0.1); /* Light green hover */
+            transform: translateX(3px);
+        }
+
+        #liked-songs-list li span {
+            flex-grow: 1;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #f0fff0; /* Honeydew */
+        }
+
+        /* Player Styles */
+        .player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #aeea00;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .player-controls button {
+            background: none;
+            color: #aeea00;
+            border: none;
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .player-progress-container {
+            flex-grow: 1;
+            margin: 0 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        #progress-bar {
+            flex-grow: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #333;
+            height: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #aeea00;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #progress-bar::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #aeea00;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .player-info {
+            min-width: 150px;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 1rem;
+        }
+
+        /* Responsive Player for Mobile */
+        @media screen and (max-width: 480px) {
+            .player {
+                flex-direction: column;
+                align-items: center;
+                padding: 0px;
+                width: 100%;
+            }
+
+            .player-controls {
+                margin-bottom: 0.5rem;
+            }
+
+            .player-progress-container {
+                width: 100%;
+                margin: 0;
+            }
+
+            #progress-bar {
+                width: 100%;
+            }
+
+            .player-info {
+                font-size: 0.9rem;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+        }
+
+        a {
+            margin-top: 2rem;
+            text-decoration: none;
+        }
+
+        a button {
+            padding: 1rem 2rem;
+            background-color: #00c853; /* Medium green */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        a button:hover {
+            background-color: #00a547;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
-    <h2>❤️ Liked Songs</h2>
+    <h2>♥️Liked Songs</h2>
     <ul id="liked-songs-list"></ul>
-    <a href="index.html"><button>⬅️ Back to Home</button></a>
+    <a href="index.html"><button>⬅ Back to Home</button></a>
+
+    <div class="player">
+        <div class="player-controls">
+            <button id="prev-btn">⏮</button>
+            <button id="play-btn">▶</button>
+            <button id="next-btn">⏭</button>
+        </div>
+        <div class="player-progress-container">
+            <input type="range" id="progress-bar" value="0" step="0.01">
+        </div>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const likedSongsList = document.getElementById("liked-songs-list");
             const likedSongs = JSON.parse(localStorage.getItem("likedSongs")) || [];
+            const playBtn = document.getElementById("play-btn");
+            const prevBtn = document.getElementById("prev-btn");
+            const nextBtn = document.getElementById("next-btn");
+            const progressBar = document.getElementById("progress-bar");
+            const currentSongDisplay = document.getElementById("current-song");
 
-            likedSongs.forEach((song) => {
-                const li = document.createElement("li");
-                li.textContent = `${song.title} - ${song.artist}`;
-                li.style.padding = "10px";
-                li.style.listStyle = "none";
+            // Create a container for the cover image and song info
+            const playerLeftContainer = document.createElement("div");
+            playerLeftContainer.style.display = "flex";
+            playerLeftContainer.style.alignItems = "center";
+            playerLeftContainer.style.marginRight = "15px";
 
-                // Play button
-                const playBtn = document.createElement("button");
-                playBtn.textContent = "▶️";
-                playBtn.style.marginLeft = "10px";
+            // Add a cover image element to the left of the player
+            const playerCover = document.createElement("img");
+            playerCover.style.width = "60px";
+            playerCover.style.height = "60px";
+            playerCover.style.borderRadius = "5px";
+            playerCover.style.marginRight = "10px";
+            playerLeftContainer.appendChild(playerCover);
 
-                // Audio element
-                const audio = new Audio(song.src);
-                playBtn.addEventListener("click", () => {
-                    if (audio.paused) {
-                        audio.play();
-                        playBtn.textContent = "⏸️";
-                    } else {
-                        audio.pause();
-                        playBtn.textContent = "▶️";
+            // Add a container for the title and artist
+            const playerSongInfo = document.createElement("div");
+            playerSongInfo.style.display = "flex";
+            playerSongInfo.style.flexDirection = "column";
+            playerSongInfo.style.justifyContent = "center";
+            playerSongInfo.style.fontSize = "0.9rem";
+            playerSongInfo.style.color = "#e0f7fa";
+            playerLeftContainer.appendChild(playerSongInfo);
+
+            // Move the playerLeftContainer to the left of the player
+            const player = document.querySelector(".player");
+            player.insertAdjacentElement("afterbegin", playerLeftContainer);
+
+            let currentSongIndex = 0;
+            let currentAudio = null;
+
+            function loadSong(index) {
+                if (index >= 0 && index < likedSongs.length) {
+                    const song = likedSongs[index];
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
                     }
-                });
+                    currentAudio = new Audio(song.src);
+                    playerSongInfo.innerHTML = `
+                        <div>${song.title || "Unknown Title"}</div>
+                        <div style="font-size: 0.8rem; color: #aeea00;">${song.artist || "Unknown Artist"}</div>
+                    `;
+                    playerCover.src = song.cover && song.cover.trim() !== '' ? song.cover : 'default-song-cover.jpg';
+                    progressBar.value = 0;
+                    progressBar.max = 1; // Will be updated on metadata load
+                    playBtn.textContent = "▶";
 
-                li.appendChild(playBtn);
+                    // Add event listeners for the new audio instance
+                    currentAudio.addEventListener("timeupdate", updateProgressBar);
+                    currentAudio.addEventListener("loadedmetadata", () => {
+                        progressBar.max = currentAudio.duration;
+                    });
+                    currentAudio.addEventListener("ended", nextSong);
+                }
+            }
+
+            function updateProgressBar() {
+                if (currentAudio && currentAudio.duration) {
+                    progressBar.value = currentAudio.currentTime;
+                    progressBar.max = currentAudio.duration;
+                }
+            }
+
+            function playCurrentSong() {
+                if (currentAudio) {
+                    currentAudio.play();
+                    playBtn.textContent = "⏸";
+                }
+            }
+
+            function pauseCurrentSong() {
+                if (currentAudio && !currentAudio.paused) {
+                    currentAudio.pause();
+                    playBtn.textContent = "▶";
+                }
+            }
+
+            function nextSong() {
+                currentSongIndex = (currentSongIndex + 1) % likedSongs.length;
+                loadSong(currentSongIndex);
+                playCurrentSong();
+            }
+
+            function prevSong() {
+                currentSongIndex = (currentSongIndex - 1 + likedSongs.length) % likedSongs.length;
+                loadSong(currentSongIndex);
+                playCurrentSong();
+            }
+
+            progressBar.addEventListener("input", () => {
+                if (currentAudio) {
+                    const seekTime = currentAudio.duration * (progressBar.value / progressBar.max);
+                    currentAudio.currentTime = seekTime;
+                }
+            });
+
+            playBtn.addEventListener("click", () => {
+                if (currentAudio) {
+                    if (currentAudio.paused) {
+                        playCurrentSong();
+                    } else {
+                        pauseCurrentSong();
+                    }
+                } else if (likedSongs.length > 0) {
+                    loadSong(currentSongIndex);
+                    playCurrentSong();
+                }
+            });
+
+            nextBtn.addEventListener("click", nextSong);
+            prevBtn.addEventListener("click", prevSong);
+
+            likedSongs.forEach((song, index) => {
+                const li = document.createElement("li");
+
+                // Add cover image
+                const songCover = document.createElement("img");
+                songCover.src = song.cover && song.cover.trim() !== '' ? song.cover : 'default-song-cover.jpg';
+                songCover.alt = song.title || 'No Title';
+                songCover.style.width = '50px';
+                songCover.style.height = '50px';
+                songCover.style.borderRadius = '5px';
+                songCover.style.marginRight = '10px';
+                li.appendChild(songCover);
+
+                const songInfo = document.createElement("span");
+                songInfo.textContent = `${song.title} - ${song.artist}`;
+                li.appendChild(songInfo);
+
+                const playInlineBtn = document.createElement("button");
+                playInlineBtn.textContent = "▶";
+                playInlineBtn.style.marginLeft = "10px";
+                playInlineBtn.addEventListener("click", () => {
+                    currentSongIndex = index;
+                    loadSong(currentSongIndex);
+                    playCurrentSong();
+                });
+                li.appendChild(playInlineBtn);
+
                 likedSongsList.appendChild(li);
             });
+
+            // Load the first song if there are liked songs
+            if (likedSongs.length > 0) {
+                loadSong(currentSongIndex);
+            } else {
+                playerSongInfo.innerHTML = "<div>No liked songs</div>";
+            }
         });
     </script>
 

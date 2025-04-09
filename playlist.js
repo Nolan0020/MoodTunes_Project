@@ -86,15 +86,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 songItem.dataset.songArtist = song.artist;
                 songItem.dataset.songIndex = index;
 
+                const songCover = document.createElement('img');
+                songCover.src = song.cover && song.cover.trim() !== '' ? song.cover : 'default-song-cover.jpg';
+                songCover.alt = song.title || 'No Title';
+                songCover.style.width = '50px';
+                songCover.style.height = '50px';
+                songCover.style.borderRadius = '5px';
+                songCover.style.marginRight = '10px';
+
                 const songInfo = document.createElement('div');
                 songInfo.classList.add('song-info');
                 const titleHeading = document.createElement('h4');
-                titleHeading.textContent = song.title;
+                titleHeading.textContent = song.title || 'Unknown Title';
                 const artistParagraph = document.createElement('p');
-                artistParagraph.textContent = song.artist;
+                artistParagraph.textContent = song.artist || 'Unknown Artist';
                 songInfo.appendChild(titleHeading);
                 songInfo.appendChild(artistParagraph);
 
+                songItem.appendChild(songCover);
                 songItem.appendChild(songInfo);
                 playlistSongsList.appendChild(songItem);
 
